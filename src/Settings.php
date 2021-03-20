@@ -29,7 +29,7 @@ class Settings {
 
 		<div class="wrap">
 			<h2>Bypass Force Login</h2>
-			<p>Lorem ipsum dolores est</p>
+			<p></p>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -123,7 +123,7 @@ class Settings {
 	}
 
 	public function bypass_force_login_section_info() {
-		echo 'HEPP';
+		// echo 'HEPP';
 	}
 
 	public function urls_callback( $args) {
