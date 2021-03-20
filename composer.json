@@ -1,0 +1,10 @@
+{
+	"require": {
+		"wp-user-manager/wp-optionskit": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Soderlind\\Plugin\\Bypass\\": "src/"
+		}
+	}
+}
