@@ -4,28 +4,31 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbceab50fbe87515d04650f40383f48d3
-{
-    public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Soderlind\\Plugin\\Bypass\\' => 24,
-        ),
-    );
+class ComposerStaticInitbceab50fbe87515d04650f40383f48d3 {
 
-    public static $prefixDirsPsr4 = array (
-        'Soderlind\\Plugin\\Bypass\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
-    );
+	public static $prefixLengthsPsr4 = [
+		'S' =>
+		[
+			'Soderlind\\Plugin\\Bypass\\' => 24,
+		],
+	];
 
-    public static function getInitializer(ClassLoader $loader)
-    {
-        return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixDirsPsr4;
+	public static $prefixDirsPsr4 = [
+		'Soderlind\\Plugin\\Bypass\\' =>
+		[
+			0 => __DIR__ . '/../..' . '/src',
+		],
+	];
 
-        }, null, ClassLoader::class);
-    }
+	public static function getInitializer( ClassLoader $loader ) {
+		return \Closure::bind(
+			function () use ( $loader ) {
+				$loader->prefixLengthsPsr4 = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixLengthsPsr4;
+				$loader->prefixDirsPsr4    = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixDirsPsr4;
+
+			},
+			null,
+			ClassLoader::class
+		);
+	}
 }

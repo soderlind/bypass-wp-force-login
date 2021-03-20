@@ -13,7 +13,7 @@ Install and activate [Force Login](https://wordpress.org/plugins/wp-force-login/
 
 - [Download the plugin](https://github.com/soderlind/bypass-wp-force-login/archive/refs/heads/main.zip)
 - Install and activate the plugin.
-- In `Settings->Bypass Force Login`, add exceptions.
+- In `Admin->Bypass Force Login`, add exceptions.
 
 ## Copyright and License
 

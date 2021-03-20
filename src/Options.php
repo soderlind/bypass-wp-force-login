@@ -1,17 +1,33 @@
-<?php declare( strict_types = 1 );
+<?php
+/**
+ * Apply Get options..
+ *
+ * @author: Per Soderlind
+ * @since: 20.03.2021
+ *
+ * @package Soderlind\Plugin\Bypass
+ */
+
+declare( strict_types = 1 );
 
 namespace Soderlind\Plugin\Bypass;
 
+/**
+ * Option class.
+ */
 class Options {
 
+	/**
+	 * Empty constructor.
+	 */
 	public function __construct() {}
 
 	/**
 	 * Retrieve an option from the database.
 	 * Returns default setting if nothing found.
 	 *
-	 * @param string  $key
-	 * @param boolean $default
+	 * @param string  $key Options key.
+	 * @param boolean $default  Default option value.
 	 * @return mixed
 	 */
 	public function get_option( string $key = '', $default = false ) {
@@ -25,7 +41,7 @@ class Options {
 	/**
 	 * Get value from textarea option
 	 *
-	 * @param string $key
+	 * @param string $key Option key.
 	 *
 	 * @return array
 	 */
@@ -34,7 +50,7 @@ class Options {
 	}
 
 	/**
-	 * Retrieve all options from WPUM.
+	 * Retrieve all options.
 	 *
 	 * @return mixed
 	 */

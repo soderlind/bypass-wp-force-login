@@ -1,4 +1,4 @@
-<?php declare( strict_types = 1 );
+<?php
 /**
  * Bypass Force Login
  *
@@ -19,6 +19,9 @@
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
+
+declare( strict_types = 1 );
+
 namespace Soderlind\Plugin\Bypass;
 
 use Helper;
@@ -35,9 +38,9 @@ require_once BYPASS_ROOT . 'vendor/autoload.php';
 Tools\Helper::CheckInstallation();
 
 if ( is_admin() ) {
-	$settings = new Settings();
+	$settings = new Admin();
 } else {
 	$options = new Options();
-	$bypass = new Bypass( $options );
+	$bypass  = new Bypass( $options );
 	$bypass->init();
 }

@@ -1,23 +1,49 @@
-<?php declare( strict_types = 1 );
+<?php
+/**
+ * Apply exceptions.
+ *
+ * @author: Per Soderlind
+ * @since: 20.03.2021
+ *
+ * @package Soderlind\Plugin\Bypass
+ */
+
+declare( strict_types = 1 );
 
 namespace Soderlind\Plugin\Bypass;
 
+/**
+ * Bypass class.
+ */
 class Bypass {
+	/**
+	 * Options.
+	 *
+	 * @var object
+	 */
 	private $options;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param Options $options Option object.
+	 */
 	public function __construct( Options $options ) {
 		$this->options = $options;
 	}
 
+	/**
+	 * Apply exceptions.
+	 *
+	 * @return void
+	 */
 	public function init() {
 		add_filter(
 			'v_forcelogin_bypass',
 			function( $bypass, $visited_url ) {
-				Tools\Helper::write_log( $visited_url );
 				$bypass_urls = $this->options->get_textarea( 'urls' );
 				foreach ( (array) $bypass_urls as $bypass_url ) {
 					if ( false !== strpos( $visited_url, $bypass_url ) ) {
-						Tools\Helper::write_log( 'matched url' );
 						return true;
 					}
 				}
