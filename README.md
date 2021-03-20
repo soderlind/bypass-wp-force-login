@@ -13,8 +13,7 @@ Install and activate [Force Login](https://wordpress.org/plugins/wp-force-login/
 
 - [Download the plugin](https://github.com/soderlind/bypass-wp-force-login/archive/refs/heads/main.zip)
 - Install and activate the plugin.
-- Add the `[es6demo]` shortcode to a page.
-- Click on the `+` button to increment the number.
+- In `Settings->Bypass Force Login`, add exceptions.
 
 ## Copyright and License
 
