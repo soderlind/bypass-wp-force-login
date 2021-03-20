@@ -6,5 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'TDP\\OptionsKit' => $vendorDir . '/wp-user-manager/wp-optionskit/wp-optionskit.php',
 );

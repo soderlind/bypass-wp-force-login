@@ -11,10 +11,6 @@ class ComposerStaticInitbceab50fbe87515d04650f40383f48d3
         array (
             'Soderlind\\Plugin\\Bypass\\' => 24,
         ),
-        'C' => 
-        array (
-            'Composer\\Installers\\' => 20,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -22,14 +18,6 @@ class ComposerStaticInitbceab50fbe87515d04650f40383f48d3
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Composer\\Installers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
-        ),
-    );
-
-    public static $classMap = array (
-        'TDP\\OptionsKit' => __DIR__ . '/..' . '/wp-user-manager/wp-optionskit/wp-optionskit.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -37,7 +25,6 @@ class ComposerStaticInitbceab50fbe87515d04650f40383f48d3
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitbceab50fbe87515d04650f40383f48d3::$classMap;
 
         }, null, ClassLoader::class);
     }

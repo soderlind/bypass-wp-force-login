@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Soderlind\\Plugin\\Bypass\\' => array($baseDir . '/src'),
-    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );
