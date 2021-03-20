@@ -52,7 +52,7 @@ class Settings {
 
 		add_settings_section(
 			'bypass_force_login_setting_section', // id
-			'Settings', // title
+			__( 'Exceptions', 'bypass-wp-force-login' ), // title
 			[ $this, 'bypass_force_login_section_info' ], // callback
 			'bypass-force-login-admin' // page
 		);
