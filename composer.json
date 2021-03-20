@@ -1,4 +1,19 @@
 {
+	"name": "soderlind/bypass-wp-force-login",
+	"description": "Easily add exceptions for the Force Login plugin",
+	"type": "wordpress-plugin",
+	"homepage": "https://github.com/soderlind/bypass-wp-force-login",
+	"license": [
+		"GPL-2.0-only"
+	],
+	"authors": [
+		{
+			"name": "Per Søderlind",
+			"role": "Developer",
+			"email": "per@soderlind.no",
+			"homepage": "https://soderlind.no"
+		}
+	],
 	"require": {
 		"wp-user-manager/wp-optionskit": "^1.0"
 	},
