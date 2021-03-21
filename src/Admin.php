@@ -24,6 +24,21 @@ class Admin {
 	 */
 	private $options;
 
+
+	/**
+	 * Admin menu  slug.
+	 *
+	 * @var string
+	 */
+	private $menu_slug = 'bypass-force-login';
+
+	/**
+	 * Admin page slug.
+	 *
+	 * @var string
+	 */
+	private $slug = 'bypass-force-login-admin';
+
 	/**
 	 * Constructor.
 	 */
@@ -43,7 +58,7 @@ class Admin {
 			__( 'Bypass Force Login', 'bypass-wp-force-login' ),
 			__( 'Bypass Force Login', 'bypass-wp-force-login' ),
 			'manage_options',
-			'bypass-force-login',
+			$this->menu_slug,
 			[ $this, 'create_admin_page' ]
 		);
 	}
@@ -59,12 +74,11 @@ class Admin {
 		<div class="wrap">
 			<h2>Bypass Force Login</h2>
 			<p></p>
-			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'bypass_force_login_option_group' );
-					do_settings_sections( 'bypass-force-login-admin' );
+					do_settings_sections( $this->slug );
 					submit_button();
 				?>
 			</form>
@@ -88,14 +102,14 @@ class Admin {
 			'bypass_force_login_setting_section',
 			__( 'Exceptions', 'bypass-wp-force-login' ),
 			[ $this, 'section_info' ],
-			'bypass-force-login-admin'
+			$this->slug
 		);
 
 		add_settings_field(
 			'urls',
 			__( 'URL', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
-			'bypass-force-login-admin',
+			$this->slug,
 			'bypass_force_login_setting_section',
 			[
 				'id'          => 'urls',
@@ -109,7 +123,7 @@ class Admin {
 			'patterns',
 			__( 'Pattern', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
-			'bypass-force-login-admin',
+			$this->slug,
 			'bypass_force_login_setting_section',
 			[
 				'id'          => 'patterns',
@@ -123,7 +137,7 @@ class Admin {
 			'querystringparameters',
 			__( 'Query String Parameter', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
-			'bypass-force-login-admin',
+			$this->slug,
 			'bypass_force_login_setting_section',
 			[
 				'id'          => 'querystringparameters',
@@ -198,7 +212,7 @@ class Admin {
 	 */
 	public function settings_link( array $links ) : array {
 
-		$settings_url = add_query_arg( 'page', 'bypass-force-login', get_admin_url() . 'options-general.php' );
+		$settings_url = add_query_arg( 'page', $this->menu_slug, get_admin_url() . 'options-general.php' );
 		$setting_link = '<a href="' . esc_url( $settings_url ) . '">' . __( 'Add exceptions', 'bypass-wp-force-login' ) . '</a>';
 
 		// Adds the link to the end of the array.
