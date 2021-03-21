@@ -1,6 +1,6 @@
 {
 	"name": "soderlind/bypass-wp-force-login",
-	"description": "Easily add exceptions for the Force Login plugin",
+	"description": "Easily add exceptions to the Force Login plugin",
 	"type": "wordpress-plugin",
 	"homepage": "https://github.com/soderlind/bypass-wp-force-login",
 	"license": [
