@@ -30,6 +30,7 @@ class Admin {
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
 		add_action( 'admin_init', [ $this, 'page_init' ] );
+		add_filter( 'plugin_action_links_' . BYPASS_BASENAME, [ $this, 'settings_link' ] );
 	}
 
 	/**
@@ -188,4 +189,21 @@ class Admin {
 		}
 	}
 
+	/**
+	 * Add settings link on plugin page.
+	 *
+	 * @param array $links Links.
+	 *
+	 * @return array
+	 */
+	public function settings_link( array $links ) : array {
+
+		$settings_url = add_query_arg( 'page', 'bypass-force-login', get_admin_url() . 'options-general.php' );
+		$setting_link = '<a href="' . esc_url( $settings_url ) . '">' . __( 'Add exceptions', 'bypass-wp-force-login' ) . '</a>';
+
+		// Adds the link to the end of the array.
+		array_push( $links, $setting_link );
+
+		return $links;
+	}
 }
