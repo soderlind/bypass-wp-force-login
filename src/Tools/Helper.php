@@ -38,7 +38,7 @@ class Helper {
 					$msg[] = '<p><strong>Bypass Force Login</strong></p>';
 					$msg[] = '<p>Please install and activate <a href="https://wordpress.org/plugins/wp-force-login/">Force Login</a> before you activate Bypass Force Login</p>';
 					$msg[] = '</div>';
-					echo esc_html( implode( PHP_EOL, $msg ) );
+					echo implode( PHP_EOL, $msg );
 
 					delete_transient( 'bypass-wp-force-login-activate' );
 					deactivate_plugins( BYPASS_BASENAME );
