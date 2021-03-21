@@ -9,7 +9,7 @@ Easily add [exceptions](https://wordpress.org/plugins/wp-force-login/#2.%20how%2
 
 Install and activate [Force Login](https://wordpress.org/plugins/wp-force-login/).
 
-## Installation
+## Installation / Use
 
 - [Download the plugin](https://github.com/soderlind/bypass-wp-force-login/archive/refs/heads/main.zip)
 - Install and activate the plugin.
