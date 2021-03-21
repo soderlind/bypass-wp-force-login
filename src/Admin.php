@@ -184,7 +184,7 @@ class Admin {
 			isset( $this->options[ $args['id'] ] ) ? esc_attr( $this->options[ $args['id'] ] ) : ''
 		);
 		if ( isset( $args['description'] ) ) {
-			printf( '<p class="description">%s</p>', esc_attr( $args['description'] ) );
+			printf( '<p class="description">%s</p>', $args['description'] );
 		}
 	}
 
