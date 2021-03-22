@@ -1,6 +1,6 @@
 <?php
 /**
- * Apply Get options..
+ * Get options..
  *
  * @author: Per Soderlind
  * @since: 20.03.2021
@@ -18,9 +18,20 @@ namespace Soderlind\Plugin\Bypass;
 class Options {
 
 	/**
-	 * Empty constructor.
+	 * Option name.
+	 *
+	 * @var string
 	 */
-	public function __construct() {}
+	private $name;
+
+	/**
+	 * Object constructor.
+	 *
+	 * @param string $name Option name.
+	 */
+	public function __construct( string $name ) {
+		$this->name = $name;
+	}
 
 	/**
 	 * Retrieve an option from the database.
@@ -31,11 +42,8 @@ class Options {
 	 * @return mixed
 	 */
 	public function get_option( string $key = '', $default = false ) {
-		$bypass_options = $this->get_settings();
-		$value          = ! empty( $bypass_options[ $key ] ) ? $bypass_options[ $key ] : $default;
-		$value          = apply_filters( 'bypass_get_option', $value, $key, $default );
-
-		return apply_filters( 'bypass_get_option_' . $key, $value, $key, $default );
+		$all_options = $this->get_settings();
+		return ! empty( $all_options[ $key ] ) ? $all_options[ $key ] : $default;
 	}
 
 	/**
@@ -55,7 +63,6 @@ class Options {
 	 * @return mixed
 	 */
 	public function get_settings() {
-		$settings = \get_option( 'bypass_force_login_option_name' );
-		return apply_filters( 'bypass_get_settings', $settings );
+		return \get_option( $this->name );
 	}
 }
