@@ -2,7 +2,7 @@
 /**
  * Bypass Force Login
  *
- * @package     Bypass Force Login
+ * @package     Soderlind\Plugin\Bypass
  * @author      Per Soderlind
  * @copyright   2020 Per Soderlind
  * @license     GPL-2.0+
@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/bypass-wp-force-login
  * GitHub Plugin URI: https://github.com/soderlind/bypass-wp-force-login
  * Description: Easily add exceptions to <a href="https://wordpress.org/plugins/wp-force-login/">Force Login</a>.
- * Version:     1.0.8
+ * Version:     1.0.9
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: bypass-wp-force-login
@@ -38,7 +38,7 @@ Tools\Helper::CheckInstallation();
 if ( is_admin() ) {
 	$admin = new Admin();
 } else {
-	$options = new Options();
+	$options = new Options( 'bypass_force_login_option_name' );
 	$bypass  = new Bypass( $options );
 	$bypass->init();
 }
