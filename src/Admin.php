@@ -43,9 +43,9 @@ class Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
-		add_action( 'admin_init', [ $this, 'page_init' ] );
-		add_filter( 'plugin_action_links_' . BYPASS_BASENAME, [ $this, 'settings_link' ] );
+		\add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
+		\add_action( 'admin_init', [ $this, 'page_init' ] );
+		\add_filter( 'plugin_action_links_' . BYPASS_BASENAME, [ $this, 'settings_link' ] );
 	}
 
 	/**
@@ -54,9 +54,9 @@ class Admin {
 	 * @return void
 	 */
 	public function add_plugin_page() {
-		add_options_page(
-			__( 'Bypass Force Login', 'bypass-wp-force-login' ),
-			__( 'Bypass Force Login', 'bypass-wp-force-login' ),
+		\add_options_page(
+			\__( 'Bypass Force Login', 'bypass-wp-force-login' ),
+			\__( 'Bypass Force Login', 'bypass-wp-force-login' ),
 			'manage_options',
 			$this->menu_slug,
 			[ $this, 'create_admin_page' ]
@@ -69,7 +69,7 @@ class Admin {
 	 * @return void
 	 */
 	public function create_admin_page() {
-		$this->options = get_option( 'bypass_force_login_option_name' ); ?>
+		$this->options = \get_option( 'bypass_force_login_option_name' ); ?>
 
 		<div class="wrap">
 			<h2>Bypass Force Login</h2>
@@ -77,9 +77,9 @@ class Admin {
 
 			<form method="post" action="options.php">
 				<?php
-					settings_fields( 'bypass_force_login_option_group' );
-					do_settings_sections( $this->slug );
-					submit_button();
+					\settings_fields( 'bypass_force_login_option_group' );
+					\do_settings_sections( $this->slug );
+					\submit_button();
 				?>
 			</form>
 		</div>
@@ -92,50 +92,50 @@ class Admin {
 	 * @return void
 	 */
 	public function page_init() {
-		register_setting(
+		\register_setting(
 			'bypass_force_login_option_group',
 			'bypass_force_login_option_name',
 			[ $this, 'sanitize' ]
 		);
 
-		add_settings_section(
+		\add_settings_section(
 			'bypass_force_login_setting_section',
-			__( 'Exceptions', 'bypass-wp-force-login' ),
+			\__( 'Exceptions', 'bypass-wp-force-login' ),
 			[ $this, 'section_info' ],
 			$this->slug
 		);
 
-		add_settings_field(
+		\add_settings_field(
 			'urls',
-			__( 'URL', 'bypass-wp-force-login' ),
+			\__( 'URL', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
 			$this->slug,
 			'bypass_force_login_setting_section',
 			[
 				'id'          => 'urls',
 				'label_for'   => 'urls',
-				'description' => __( 'Add the exact URL, one per line, that you want to bypass', 'bypass-wp-force-login' ),
-				'placeholder' => home_url( '/page-name/' ),
+				'description' => \__( 'Add the exact URL, one per line, that you want to bypass', 'bypass-wp-force-login' ),
+				'placeholder' => \home_url( '/page-name/' ),
 			]
 		);
 
-		add_settings_field(
+		\add_settings_field(
 			'patterns',
-			__( 'Pattern', 'bypass-wp-force-login' ),
+			\__( 'Pattern', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
 			$this->slug,
 			'bypass_force_login_setting_section',
 			[
 				'id'          => 'patterns',
 				'label_for'   => 'patterns',
-				'description' => __( 'Add the <a href="https://tutorials.supunkavinda.blog/php/regex-syntax">regexp pattern</a>, one per line, for the URL that you want to bypass', 'bypass-wp-force-login' ),
+				'description' => \__( 'Add the <a href="https://tutorials.supunkavinda.blog/php/regex-syntax">regexp pattern</a>, one per line, for the URL that you want to bypass', 'bypass-wp-force-login' ),
 				'placeholder' => '/string/',
 			]
 		);
 
-		add_settings_field(
+		\add_settings_field(
 			'querystringparameters',
-			__( 'Query String Parameter', 'bypass-wp-force-login' ),
+			\__( 'Query String Parameter', 'bypass-wp-force-login' ),
 			[ $this, 'textarea' ],
 			$this->slug,
 			'bypass_force_login_setting_section',
@@ -143,7 +143,7 @@ class Admin {
 				'id'          => 'querystringparameters',
 				'label_for'   => 'querystringparameters',
 				/* translators: Home URL as string input.*/
-				'description' => sprintf( __( 'Bypass Page URL based on, one per line, the Query String Parameter, Eg: <b>parameter</b> as in %s?parameter=xyz', 'bypass-wp-force-login' ), home_url() ),
+				'description' => sprintf( \__( 'Bypass Page URL based on, one per line, the Query String Parameter, Eg: <b>parameter</b> as in %s?parameter=xyz', 'bypass-wp-force-login' ), home_url() ),
 				'placeholder' => 'parameter',
 			]
 		);
@@ -160,15 +160,15 @@ class Admin {
 	public function sanitize( array $input ) : array {
 		$sanitary_values = [];
 		if ( isset( $input['urls'] ) ) {
-			$sanitary_values['urls'] = esc_textarea( $input['urls'] );
+			$sanitary_values['urls'] = \esc_textarea( $input['urls'] );
 		}
 
 		if ( isset( $input['patterns'] ) ) {
-			$sanitary_values['patterns'] = esc_textarea( $input['patterns'] );
+			$sanitary_values['patterns'] = \esc_textarea( $input['patterns'] );
 		}
 
 		if ( isset( $input['querystringparameters'] ) ) {
-			$sanitary_values['querystringparameters'] = esc_textarea( $input['querystringparameters'] );
+			$sanitary_values['querystringparameters'] = \esc_textarea( $input['querystringparameters'] );
 		}
 
 		return $sanitary_values;
@@ -195,8 +195,8 @@ class Admin {
 		printf(
 			'<textarea class="large-text" rows="5" name="bypass_force_login_option_name[%1$s]" id="%1$s" placeholder="%2$s">%3$s</textarea>',
 			$args['id'],
-			isset( $args['placeholder'] ) ? esc_attr( $args['placeholder'] ) : '',
-			isset( $this->options[ $args['id'] ] ) ? esc_attr( $this->options[ $args['id'] ] ) : ''
+			isset( $args['placeholder'] ) ? \esc_attr( $args['placeholder'] ) : '',
+			isset( $this->options[ $args['id'] ] ) ? \esc_attr( $this->options[ $args['id'] ] ) : ''
 		);
 		if ( isset( $args['description'] ) ) {
 			printf( '<p class="description">%s</p>', $args['description'] );
@@ -212,8 +212,8 @@ class Admin {
 	 */
 	public function settings_link( array $links ) : array {
 
-		$settings_url = add_query_arg( 'page', $this->menu_slug, get_admin_url() . 'options-general.php' );
-		$setting_link = '<a href="' . esc_url( $settings_url ) . '">' . __( 'Add exceptions', 'bypass-wp-force-login' ) . '</a>';
+		$settings_url = \add_query_arg( 'page', $this->menu_slug, \get_admin_url() . 'options-general.php' );
+		$setting_link = '<a href="' . \esc_url( $settings_url ) . '">' . \__( 'Add exceptions', 'bypass-wp-force-login' ) . '</a>';
 
 		// Adds the link to the end of the array.
 		array_push( $links, $setting_link );

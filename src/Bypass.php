@@ -38,7 +38,7 @@ class Bypass {
 	 * @return void
 	 */
 	public function init() {
-		add_filter(
+		\add_filter(
 			'v_forcelogin_bypass',
 			function( $bypass, $visited_url ) {
 				$bypass_urls = $this->options->get_textarea( 'urls' );
