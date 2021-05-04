@@ -36,7 +36,6 @@ class Helper {
 					$msg[] = '</div>';
 					echo implode( PHP_EOL, $msg );
 
-					\delete_transient( 'bypass-wp-force-login-activate' );
 					\deactivate_plugins( BYPASS_BASENAME );
 				}
 			);
