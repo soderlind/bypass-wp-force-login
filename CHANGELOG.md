@@ -1,5 +1,7 @@
 # Changelog
 
+1.0.11
+- Add translation.
 
 1.0.10
 - Optimizing PHP performance by using fully-qualified function calls
