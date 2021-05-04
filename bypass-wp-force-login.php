@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/bypass-wp-force-login
  * GitHub Plugin URI: https://github.com/soderlind/bypass-wp-force-login
  * Description: Easily add exceptions to <a href="https://wordpress.org/plugins/wp-force-login/">Force Login</a>.
- * Version:     1.0.10
+ * Version:     1.0.11
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: bypass-wp-force-login
@@ -32,6 +32,10 @@ define( 'BYPASS_ROOT', \plugin_dir_path( __FILE__ ) );
 define( 'BYPASS_BASENAME', \plugin_basename( __FILE__ ) );
 
 require_once BYPASS_ROOT . 'vendor/autoload.php';
+
+\add_action( 'admin_init', function() : void {
+	\load_plugin_textdomain( 'bypass-wp-force-login', false, BYPASS_ROOT . 'languages' );
+} );
 
 Tools\Helper::CheckInstallation();
 
