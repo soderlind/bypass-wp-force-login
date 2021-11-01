@@ -25,6 +25,10 @@ class Helper {
 	 */
 	public static function CheckInstallation() {
 
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		if ( ! \is_plugin_active( 'wp-force-login/wp-force-login.php' ) ) {
 
 			\add_action(
